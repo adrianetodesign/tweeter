@@ -12,9 +12,15 @@
   border-bottom: solid #000000;
 }
 
+.new-tweet label {
+  font-weight: bold;
+}
+
 .new-tweet textarea {
   background: transparent;
   border: none;
+  resize: none;
+  width: 480px;
 }
 
 .new-tweet button {
