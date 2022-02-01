@@ -1,0 +1,9 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: #727781;
+  background-image: url("https://www.transparenttextures.com/patterns/broken-noise.png");
+}
