@@ -1,0 +1,23 @@
+nav {
+  height: 120px;
+  background-color: #4055A1;
+  color: #FFFFFF;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+nav span {
+  font-family: 'Bungee', sans-serif;
+  font-size: 48px;
+}
+
+nav div {
+  text-align: center;
+  font-size: 24px;
+}
+
+nav div i {
+  color: #ff0000;
+}
