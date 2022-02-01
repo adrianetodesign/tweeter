@@ -6,5 +6,6 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #DAA520;
+  background-color: #48D5CD;
+  background-image: url("/images/cartographer.png");
 }
