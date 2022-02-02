@@ -17,6 +17,7 @@ article.tweet header {
   flex-direction: row;
   justify-content: space-between;
   padding: 1em;
+  margin-top: 1em;
 }
 
 article.tweet header h6 {
