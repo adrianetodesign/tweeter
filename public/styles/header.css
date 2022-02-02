@@ -8,4 +8,5 @@ header {
   align-items: center;
   background-color: #48D5CD;
   background-image: url("/images/cartographer.png");
+  margin-top: 120px;
 }
