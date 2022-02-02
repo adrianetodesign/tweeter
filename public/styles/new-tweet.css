@@ -48,3 +48,7 @@
 .new-tweet .counter {
   font-family: 'Bungee', sans-serif;
 }
+
+.red-text {
+  color: #ff0000;
+}
