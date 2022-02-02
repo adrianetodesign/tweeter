@@ -19,6 +19,9 @@ article.tweet header {
   padding: 1em;
   margin-top: 1em;
 }
+article.tweet header h5 {
+  padding-left: 0.75em;
+}
 
 article.tweet header h6 {
   color: #bbbbbb;
