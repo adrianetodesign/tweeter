@@ -32,7 +32,7 @@ const data = [
 
 $(() => {
   const createTweetElement = function(tweet) {
-    return `
+    let $htmlTweet = `
     <article class="tweet">
     <header>
       <div class="user">
@@ -52,6 +52,7 @@ $(() => {
     </footer>
     </article>
     `;
+    return $htmlTweet;
   };
 
   const renderTweets = function(tweets) {
