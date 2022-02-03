@@ -58,11 +58,17 @@ $(() => {
     event.preventDefault();
     //Form Validation
     if (!$(".tweet-text").val()) {
-      return alert("Tweet can not be empty.");
+      $(".tweet-error").empty();
+      return $(".tweet-error").append("<p class='red-text'>Tweet can not be empty.</p>").slideDown("slow");
     }
     if ($(".tweet-text").val().length > 140) {
-      return alert("Tweet can not exceed 140 characters.");
+      $(".tweet-error").empty();
+      return $(".tweet-error").append("<p class='red-text'>Tweet can not exceed 140 characters.</p>").slideDown("slow");
     }
+    else {
+      $(".tweet-error").slideUp();
+    }
+
 
     //POST method for submitting tweet form
     $.ajax("/tweets", {
