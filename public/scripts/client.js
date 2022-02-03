@@ -10,6 +10,7 @@ $(() => {
     return div.innerHTML;
   };
 
+  // Constructs tweet html.
   const createTweetElement = function(tweet) {
     let $htmlTweet = `
     <article class="tweet">
@@ -36,7 +37,7 @@ $(() => {
   
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
-      $("#tweets-container").append(createTweetElement(tweet));
+      $("#tweets-container").prepend(createTweetElement(tweet));
     }
   };
   
@@ -54,6 +55,7 @@ $(() => {
   loadTweets();
   
 
+  //--- Tweet form submission ---
   $("form.tweet-form").on("submit", function(event) {
     event.preventDefault();
     //Form Validation
