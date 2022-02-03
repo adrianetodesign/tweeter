@@ -34,20 +34,8 @@ const renderTweets = function(tweets) {
   }
 };
 
+
 $(() => {
-  $("form.tweet-form").on("submit", (event) => {
-    console.log("Tweet submitted, adding to database.");
-    event.preventDefault();
-    $.ajax("/tweets", {
-      method: "POST",
-      data: $(this).serialize()
-    }).then((tweet) => {
-      console.log("Tweet submission successful.");
-      $(".tweet-text").val("");
-    }).catch((err) => {
-      console.log("An error has occured:", err);
-    });
-  });
 
   const loadTweets = function() {
     $.ajax("/tweets", {
@@ -60,5 +48,29 @@ $(() => {
   };
 
   loadTweets();
-  
+
+  $("form.tweet-form").on("submit", (event) => {
+    event.preventDefault();
+    //Form Validation
+    if (!$("#tweet-text").val()) {
+      return alert("Tweet can not be empty.");
+    }
+    if ($("#tweet-text").val().length > 140) {
+      return alert("Tweet can not exceed 140 characters.");
+    }
+
+    console.log("Tweet submitted to database.");
+
+    //POST method for submitting tweet form
+    $.ajax("/tweets", {
+      method: "POST",
+      data: $(this).serialize()
+    }).then((tweet) => {
+      console.log("Tweet submission successful.");
+      $("#tweet-text").val("");
+      loadTweets();
+    }).catch((err) => {
+      console.log("An error has occured:", err);
+    });
+  });
 });
