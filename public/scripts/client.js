@@ -30,36 +30,36 @@ const data = [
   }
 ]
 
-$(() => {
-  const createTweetElement = function(tweet) {
-    let $htmlTweet = `
-    <article class="tweet">
-    <header>
-      <div class="user">
-        <img src="${tweet.user.avatars}">
-        <h5>${tweet.user.name}</h5>
-      </div>
-      <h6>${tweet.user.handle}</h6>
-    </header>
-    <p>${tweet.content.text}</p>
-    <footer>
-      <h6>${timeago.format(tweet.created_at)}</h6>
-      <div>
-        <i class="fas fa-flag"></i>
-        <i class="fas fa-retweet"></i>
-        <i class="fas fa-heart"></i>
-      </div>
-    </footer>
-    </article>
-    `;
-    return $htmlTweet;
-  };
+const createTweetElement = function(tweet) {
+  let $htmlTweet = `
+  <article class="tweet">
+  <header>
+    <div class="user">
+      <img src="${tweet.user.avatars}">
+      <h5>${tweet.user.name}</h5>
+    </div>
+    <h6>${tweet.user.handle}</h6>
+  </header>
+  <p>${tweet.content.text}</p>
+  <footer>
+    <h6>${timeago.format(tweet.created_at)}</h6>
+    <div>
+      <i class="fas fa-flag"></i>
+      <i class="fas fa-retweet"></i>
+      <i class="fas fa-heart"></i>
+    </div>
+  </footer>
+  </article>
+  `;
+  return $htmlTweet;
+};
 
-  const renderTweets = function(tweets) {
-    for (const tweet of tweets) {
-      $('#tweets-container').append(createTweetElement(tweet));
-    }
+const renderTweets = function(tweets) {
+  for (const tweet of tweets) {
+    $('#tweets-container').append(createTweetElement(tweet));
   }
+}
 
+$(() => {
   renderTweets(data);
 });
