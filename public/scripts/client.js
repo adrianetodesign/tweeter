@@ -56,10 +56,23 @@ const createTweetElement = function(tweet) {
 
 const renderTweets = function(tweets) {
   for (const tweet of tweets) {
-    $('#tweets-container').append(createTweetElement(tweet));
+    $("#tweets-container").append(createTweetElement(tweet));
   }
-}
+};
 
 $(() => {
+  $("form.tweet-form").on("submit", (event) => {
+    console.log("Tweet submitted, adding to database.");
+    event.preventDefault();
+    $.ajax("/tweets", {
+      method: "post",
+      data: $(this).serialize()
+    }).then((tweet) => {
+      console.log("Tweet submission successful.");
+      $(".tweet-text").val("");
+    }).catch((err) => {
+      console.log("An error has occured:", err);
+    });
+  });
   renderTweets(data);
 });
