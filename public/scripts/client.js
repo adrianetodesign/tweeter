@@ -34,43 +34,45 @@ const renderTweets = function(tweets) {
   }
 };
 
+const loadTweets = function() {
+  $.ajax("/tweets", {
+    method: "GET"
+  }).then((tweets) => {
+    renderTweets(tweets);
+  }).catch((err) => {
+    console.log("An error has occured:", err);
+  });
+};
 
 $(() => {
 
-  const loadTweets = function() {
-    $.ajax("/tweets", {
-      method: "GET"
-    }).then((tweets) => {
-      renderTweets(tweets);
-    }).catch((err) => {
-      console.log("An error has occured:", err);
-    });
-  };
-
-  loadTweets();
-
-  $("form.tweet-form").on("submit", (event) => {
+  $("form.tweet-form").on("submit", function(event) {
     event.preventDefault();
     //Form Validation
-    if (!$("#tweet-text").val()) {
+    if (!$(".tweet-text").val()) {
       return alert("Tweet can not be empty.");
     }
-    if ($("#tweet-text").val().length > 140) {
+    if ($(".tweet-text").val().length > 140) {
       return alert("Tweet can not exceed 140 characters.");
     }
 
     console.log("Tweet submitted to database.");
-
+    console.log($(this).serialize());
     //POST method for submitting tweet form
     $.ajax("/tweets", {
       method: "POST",
       data: $(this).serialize()
     }).then((tweet) => {
+      console.log(tweet);
       console.log("Tweet submission successful.");
-      $("#tweet-text").val("");
+      $('form').trigger('reset');
       loadTweets();
     }).catch((err) => {
+      console.log($(this));
       console.log("An error has occured:", err);
     });
   });
+
+  loadTweets();
+
 });
