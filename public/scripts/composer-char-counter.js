@@ -1,7 +1,7 @@
 $(() => {
   console.log("Document ready!");
 
-  $("#tweet-text").on("input", function() {
+  $(".tweet-text").on("input", function() {
     let charTyped = this.value.length;
     let charAvail = 140 - charTyped;
 
