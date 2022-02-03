@@ -55,15 +55,12 @@ $(() => {
     if ($(".tweet-text").val().length > 140) {
       return alert("Tweet can not exceed 140 characters.");
     }
-
-    console.log("Tweet submitted to database.");
-    console.log($(this).serialize());
+    
     //POST method for submitting tweet form
     $.ajax("/tweets", {
       method: "POST",
       data: $(this).serialize()
     }).then((tweet) => {
-      console.log(tweet);
       console.log("Tweet submission successful.");
       $('form').trigger('reset');
       loadTweets();
