@@ -4,19 +4,25 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(() => {
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const createTweetElement = function(tweet) {
     let $htmlTweet = `
     <article class="tweet">
     <header>
       <div class="user">
-        <img src="${tweet.user.avatars}">
-        <h5>${tweet.user.name}</h5>
+        <img src="${escape(tweet.user.avatars)}">
+        <h5>${escape(tweet.user.name)}</h5>
       </div>
-      <h6>${tweet.user.handle}</h6>
+      <h6>${escape(tweet.user.handle)}</h6>
     </header>
-    <p>${tweet.content.text}</p>
+    <p>${escape(tweet.content.text)}</p>
     <footer>
-      <h6>${timeago.format(tweet.created_at)}</h6>
+      <h6>${timeago.format(escape(tweet.created_at))}</h6>
       <div>
         <i class="fas fa-flag"></i>
         <i class="fas fa-retweet"></i>
@@ -57,7 +63,7 @@ $(() => {
     if ($(".tweet-text").val().length > 140) {
       return alert("Tweet can not exceed 140 characters.");
     }
-    
+
     //POST method for submitting tweet form
     $.ajax("/tweets", {
       method: "POST",
