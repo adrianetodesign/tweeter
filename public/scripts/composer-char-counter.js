@@ -1,6 +1,7 @@
 (function($) {
 
   $(() => {
+    //--- Dynamically changes the count for characters in form textarea.
     $(".tweet-text").on("input", function() {
       let charTyped = this.value.length;
       let charAvail = 140 - charTyped;

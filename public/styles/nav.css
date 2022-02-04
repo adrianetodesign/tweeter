@@ -30,7 +30,10 @@ nav div i {
   color: #ff0000;
 }
 
-nav.nav-scroll-bg {
+/*
+Class for scroll function
+*/
+.nav-scroll-bg {
   height: 120px;
   background-color: #4055A1;
 }
