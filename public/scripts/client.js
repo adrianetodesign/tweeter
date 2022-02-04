@@ -94,10 +94,18 @@ $(() => {
     });
   });
 
+  $(window).scroll(function() {
+    if($(this).scrollTop() >= 280) {
+      $("nav").addClass("nav-scroll-bg");
+    } else {
+      $("nav").removeClass("nav-scroll-bg");
+    }
+  })
+
   //--- Function for the return to top of page button.
   $(window).scroll(function() {
-    // Fade button in if user scrolls past 50 pixels. Else, fade out.
-    if ($(this).scrollTop() >= 50) {
+    // Fade button in if user scrolls past 400 pixels. Else, fade out.
+    if ($(this).scrollTop() >= 400) {
         $("#return-to-top").fadeIn(200);
     } else {
         $("#return-to-top").fadeOut(200);

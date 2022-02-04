@@ -1,6 +1,4 @@
 nav {
-  height: 120px;
-  background-color: #4055A1;
   color: #FFFFFF;
   padding: 1.5em;
   width: 100%;
@@ -10,6 +8,12 @@ nav {
   justify-content: space-between;
   z-index: 1;
   position: fixed;
+
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 nav span {
@@ -24,4 +28,17 @@ nav div {
 
 nav div i {
   color: #ff0000;
+}
+
+nav.nav-scroll-bg {
+  height: 120px;
+  background-color: #4055A1;
+}
+
+
+@media only screen and (min-width: 1024px) {
+  nav {
+    height: 120px;
+    background-color: #4055A1;
+  }
 }
