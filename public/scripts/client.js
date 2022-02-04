@@ -23,7 +23,7 @@ $(() => {
     </header>
     <p>${escape(tweet.content.text)}</p>
     <footer>
-      <h6>${timeago.format(escape(tweet.created_at))}</h6>
+      <span>${timeago.format(escape(tweet.created_at))}</span>
       <div>
         <i class="fas fa-flag"></i>
         <i class="fas fa-retweet"></i>
@@ -34,13 +34,13 @@ $(() => {
     `;
     return $htmlTweet;
   };
-  
+
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       $("#tweets-container").prepend(createTweetElement(tweet));
     }
   };
-  
+
   const loadTweets = function() {
     $.ajax("/tweets", {
       method: "GET"
@@ -51,9 +51,9 @@ $(() => {
       console.log("An error has occured:", err);
     });
   };
-  
+
   loadTweets();
-  
+
 
   //--- Tweet form submission ---
   $("form.tweet-form").on("submit", function(event) {
@@ -84,6 +84,20 @@ $(() => {
       console.log($(this));
       console.log("An error has occured:", err);
     });
+  });
+
+  $(window).scroll(function() {
+    // Fade arrow in if user scrolls past 50 pixels. Else, fade out.
+    if ($(this).scrollTop() >= 50) {
+        $('#return-to-top').fadeIn(200);
+    } else {
+        $('#return-to-top').fadeOut(200);
+    }
+  });
+  $('#return-to-top').click(function() {
+      $('body,html').animate({
+          scrollTop : 0
+      }, 500);
   });
 
 });
