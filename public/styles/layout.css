@@ -24,6 +24,8 @@ body {
 }
 
 main {
+  display: flex;
+  flex-direction: column;
   width: 90%;
   margin: 0 auto;
 }
@@ -61,4 +63,14 @@ main {
 #return-to-top:hover i {
   color: #ffffff;
   top: 5px;
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    margin-top: 5em;
+  }
 }

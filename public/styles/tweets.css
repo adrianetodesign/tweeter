@@ -72,3 +72,10 @@ article.tweet:hover {
 article.tweet i:hover {
   color: crimson;
 }
+
+@media only screen and (min-width: 1024px) {
+  article.tweet {
+    width:60vw;
+
+  }
+}

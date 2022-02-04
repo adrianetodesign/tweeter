@@ -53,3 +53,9 @@
 .red-text {
   color: #ff0000;
 }
+
+@media only screen and (min-width: 1024px) {
+  #new-tweet textarea{
+    width:60vw;
+  }
+}
