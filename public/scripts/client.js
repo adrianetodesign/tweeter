@@ -73,29 +73,43 @@ $(() => {
 
 
     //POST method for submitting tweet form
-    $.ajax("/tweets", {
-      method: "POST",
-      data: $(this).serialize()
-    }).then((tweet) => {
+    $.post("/tweets", $(this).serialize()
+    ).then((tweet) => {
       console.log("Tweet submission successful.");
-      $('form').trigger('reset');
+      $("form").trigger("reset");
       loadTweets();
     }).catch((err) => {
       console.log($(this));
       console.log("An error has occured:", err);
     });
+    
+    // $.ajax("/tweets", {
+    //   method: "POST",
+    //   data: $(this).serialize()
+    // }).then((tweet) => {
+    //   console.log("Tweet submission successful.");
+    //   $("form").trigger("reset");
+    //   loadTweets();
+    // }).catch((err) => {
+    //   console.log($(this));
+    //   console.log("An error has occured:", err);
+    // });
   });
+
+  // $("scroll-to-tweet").click(function {
+  //   $('')
+  // });
 
   $(window).scroll(function() {
     // Fade arrow in if user scrolls past 50 pixels. Else, fade out.
     if ($(this).scrollTop() >= 50) {
-        $('#return-to-top').fadeIn(200);
+        $("#return-to-top").fadeIn(200);
     } else {
-        $('#return-to-top').fadeOut(200);
+        $("#return-to-top").fadeOut(200);
     }
   });
-  $('#return-to-top').click(function() {
-      $('body,html').animate({
+  $("#return-to-top").click(function() {
+      $("html,body").animate({
           scrollTop : 0
       }, 500);
   });
