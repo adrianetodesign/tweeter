@@ -4,8 +4,7 @@ Tweeter is a simple, single-page Twitter clone.
 
 ## Final Product
 
-!["Tweeter page at desktop sizes"](https://github.com/adrianetodesign/tweeter/blob/main/docs/desktop-index.png)
-!["Tweeter page at mobile/tablet sizes"](https://github.com/adrianetodesign/tweeter/blob/main/docs/mobile-tablet-index.png)
+!["Tweeter index page"](https://github.com/adrianetodesign/tweeter/blob/main/docs/tweeter-index.png)
 
 ## Features
 - Tweeter is a seamless, dynamic single-page application thanks to the power of Ajax.
