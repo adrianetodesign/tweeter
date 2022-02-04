@@ -10,6 +10,7 @@ $(() => {
     return div.innerHTML;
   };
 
+  //--- Creates a tweet in appropriate html layout.
   const createTweetElement = function(tweet) {
     let $htmlTweet = `
     <article class="tweet">
@@ -34,12 +35,15 @@ $(() => {
     return $htmlTweet;
   };
 
+  //--- Given an array of tweets, renders them in their proper container on the page.
   const renderTweets = function(tweets) {
+    // Prepend to ensure most recent tweet is placed on top.
     for (const tweet of tweets) {
       $("#tweets-container").prepend(createTweetElement(tweet));
     }
   };
 
+  //--- GET Request to grab tweets from database/server.
   const loadTweets = function() {
     $.get("/tweets")
       .then((tweets) => {
@@ -53,7 +57,7 @@ $(() => {
   loadTweets();
 
 
-  //--- Tweet form submission ---
+  //--- Tweet form submission, i.e. POST Request
   $("form.tweet-form").on("submit", function(event) {
     event.preventDefault();
     //Form Validation
@@ -74,6 +78,7 @@ $(() => {
       .then(() => {
         console.log("Tweet submission successful.");
         $("form").trigger("reset");
+        $("output.counter").val(140);
         loadTweets();
       }).catch((err) => {
         console.log($(this));
@@ -81,12 +86,17 @@ $(() => {
       });
   });
 
-  // $("scroll-to-tweet").click(function {
-  //   $('')
-  // });
+  $("#scroll-new-tweet").click(function() {
+    $("html, body").animate({
+      scrollTop: $("#new-tweet").offset().top
+    },500, function() {
+      $(".tweet-text").focus();
+    });
+  });
 
+  //--- Function for the return to top of page button.
   $(window).scroll(function() {
-    // Fade arrow in if user scrolls past 50 pixels. Else, fade out.
+    // Fade button in if user scrolls past 50 pixels. Else, fade out.
     if ($(this).scrollTop() >= 50) {
         $("#return-to-top").fadeIn(200);
     } else {
@@ -94,8 +104,8 @@ $(() => {
     }
   });
   $("#return-to-top").click(function() {
-      $("html,body").animate({
-          scrollTop : 0
+      $("html, body").animate({
+          scrollTop: 0
       }, 500);
   });
 
