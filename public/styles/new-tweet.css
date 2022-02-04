@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding-top: 2em;
 }
 
 /*
@@ -16,16 +18,15 @@
   padding-bottom: 0.75em;
 }
 
-#new-tweet label {
-  font-weight: bold;
-  padding: 0 0.5em 0 0;
-}
-
 #new-tweet textarea {
   background: transparent;
   border: none;
   resize: none;
-  width: 480px;
+  width: 80vw;
+}
+
+#new-tweet textarea::placeholder {
+  font-weight: bold;
 }
 
 /*
