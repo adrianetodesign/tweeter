@@ -4,13 +4,12 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(() => {
-  const escape = function (str) {
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
-  // Constructs tweet html.
   const createTweetElement = function(tweet) {
     let $htmlTweet = `
     <article class="tweet">
@@ -42,14 +41,13 @@ $(() => {
   };
 
   const loadTweets = function() {
-    $.ajax("/tweets", {
-      method: "GET"
-    }).then((tweets) => {
-      $("#tweets-container").empty();
-      renderTweets(tweets);
-    }).catch((err) => {
-      console.log("An error has occured:", err);
-    });
+    $.get("/tweets")
+      .then((tweets) => {
+        $("#tweets-container").empty();
+        renderTweets(tweets);
+      }).catch((err) => {
+        console.log("An error has occured:", err);
+      });
   };
 
   loadTweets();
@@ -66,34 +64,21 @@ $(() => {
     if ($(".tweet-text").val().length > 140) {
       $(".tweet-error").empty();
       return $(".tweet-error").append("<p class='red-text'>Tweet can not exceed 140 characters.</p>").slideDown("slow");
-    }
-    else {
+    } else {
       $(".tweet-error").slideUp();
     }
 
 
     //POST method for submitting tweet form
-    $.post("/tweets", $(this).serialize()
-    ).then((tweet) => {
-      console.log("Tweet submission successful.");
-      $("form").trigger("reset");
-      loadTweets();
-    }).catch((err) => {
-      console.log($(this));
-      console.log("An error has occured:", err);
-    });
-    
-    // $.ajax("/tweets", {
-    //   method: "POST",
-    //   data: $(this).serialize()
-    // }).then((tweet) => {
-    //   console.log("Tweet submission successful.");
-    //   $("form").trigger("reset");
-    //   loadTweets();
-    // }).catch((err) => {
-    //   console.log($(this));
-    //   console.log("An error has occured:", err);
-    // });
+    $.post("/tweets", $(this).serialize())
+      .then(() => {
+        console.log("Tweet submission successful.");
+        $("form").trigger("reset");
+        loadTweets();
+      }).catch((err) => {
+        console.log($(this));
+        console.log("An error has occured:", err);
+      });
   });
 
   // $("scroll-to-tweet").click(function {
